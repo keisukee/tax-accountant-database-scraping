@@ -14,10 +14,8 @@ def move_to_next_page(driver, original_window, new_window)
 
   pagenation_links = pagenation.find_elements(tag_name: "a")
   pagenation_links[pagenation_links.length - 1].click
-  # (NEXT) ページ遷移のテキスト これが見つからなくなったら検索終了
 
   driver.switch_to.window(new_window)
-  # ここまで
   sleep 3
 end
 
@@ -35,10 +33,6 @@ def calc_pagenation_count(driver, original_window)
   end
 
   trial_times
-end
-
-def scrape_tax_accountant_data(driver, current_window)
-
 end
 
 driver.get url

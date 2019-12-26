@@ -1,13 +1,8 @@
 require "selenium-webdriver"
-# require 'selenium-phantomjs'
-# require 'capybara'
-# require 'poltergeist'
 
 driver = Selenium::WebDriver.for :firefox
 def url
   "https://www.zeirishikensaku.jp/z_top2.asp"
-  # "https://www.zeirishikensaku.jp/default.html"
-  # "https://www.zeirishikensaku.jp/sch/zs_sch1.asp"
 end
 
 def move_to_next_page(driver, original_window, new_window)
@@ -47,19 +42,9 @@ def scrape_tax_accountant_data(driver, current_window)
 end
 
 driver.get url
-# driver.execute_script("alert()")
-# javascript:onClick=jf_SerchClick();
-# javascript:onclick=jf_SearchClick(1); 名前・所在地で検索したいとき: 検索ボタンを
-# javascript:onclick=jf_SearchClick(1);
 
 driver.manage.timeouts.implicit_wait = 5
 
-# wait = Selenium::WebDriver::Wait.new(:timeout => 15)
-
-# driver.switch_to.frame("naiyo")
-
-# wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-# wait.until {driver.find_elements(tag_name: 'a').displayed?}
 sleep 1
 
 atags = driver.find_elements(tag_name: "a")
@@ -69,9 +54,6 @@ sleep 1
 driver.execute_script("javascript:onclick=jf_SearchClick(1);")
 sleep 1
 trs = driver.find_elements(tag_name: "tr")
-# trs.each do |tr|
-#   puts tr.text
-# end
 
 new_window = driver.window_handles.last
 driver.close
@@ -80,13 +62,6 @@ driver.switch_to.window(new_window)
 sleep 1
 
 trs = driver.find_elements(tag_name: "tr")
-
-# trs.each do |tr|
-#   puts tr.text
-# end
-# puts atags.length
-# atags[5].click
-# sleep 50
 
 input_buttons = driver.find_elements(tag_name: "input")
 input_buttons[4].click # 事務所所在地のラジオボタンをクリック
@@ -99,7 +74,6 @@ sleep 1
 # 検索ボタンをクリック
 a_buttons = driver.find_elements(tag_name: "a")
 a_buttons[2].click
-# driver.execute_script("javascript:onClick=jf_SerchClick();")
 
 current_window = driver.window_handles.last
 
@@ -130,7 +104,7 @@ trial_times.times do |i|
     driver.switch_to.window(current_window)
     new_window = driver.window_handles.last
     driver.switch_to.window(new_window)
-    sleep 2
+    sleep 1
     goal_tds = driver.find_elements(tag_name: "td")
     goal_tds.each do |td|
       puts td.text
@@ -139,7 +113,7 @@ trial_times.times do |i|
     driver.switch_to.window(current_window)
   end
 
-  sleep 2
+  sleep 1
   move_to_next_page(driver, current_window, new_window)
   driver.switch_to.window(current_window)
 end

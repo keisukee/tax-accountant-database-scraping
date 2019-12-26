@@ -61,13 +61,27 @@ input_buttons = driver.find_elements(tag_name: "input")
 input_buttons[4].click # 事務所所在地のラジオボタンをクリック
 sleep 1
 # input_buttons[1].send_keys("山梨県北杜市") # 1ページのみ
-input_buttons[1].send_keys("下北沢") # 2ページ
+# input_buttons[1].send_keys("下北沢") # 2ページ
 # input_buttons[1].send_keys("恵比寿南") # 3ページ
+input_buttons[1].send_keys("東京都") # 100件こえる場合
 sleep 1
 
 # 検索ボタンをクリック
 a_buttons = driver.find_elements(tag_name: "a")
 a_buttons[2].click
+
+# 検索結果が100件以上を越える場合、アラートが出る
+begin
+  if dialog = driver.switch_to.alert
+    if dialog.text.include?('100件を超えています')
+      puts "検索結果が100件を超えたのでスクレイピングできません"
+      dialog.accept
+      exit
+    end
+  end
+rescue => e
+
+end
 
 current_window = driver.window_handles.last
 

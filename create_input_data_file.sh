@@ -1,0 +1,35 @@
+#!/bin/zsh
+
+touch input/yokohama_data.txt
+touch input/kyoto_data.txt
+touch input/saitama_data.txt
+touch input/kawaguchi_data.txt
+touch input/kawagoe_data.txt
+touch input/kawasaki_data.txt
+touch input/sagamihara_data.txt
+touch input/fujisawa_data.txt
+touch input/chigasaki_data.txt
+touch input/chiba_data.txt
+touch input/funabashi_data.txt
+touch input/ichikawa_data.txt
+touch input/kashiwa_data.txt
+touch input/matsudo_data.txt
+touch input/osaka_data.txt
+touch input/maikata_data.txt
+touch input/sakai_data.txt
+touch input/setagaya_data.txt
+touch input/suginami_data.txt
+touch input/minato_data.txt
+touch input/meguro_data.txt
+touch input/chuo_data.txt
+touch input/nakano_data.txt
+touch input/edogawa_data.txt
+touch input/adachi_data.txt
+touch input/itabashi_data.txt
+touch input/katsushika_data.txt
+touch input/toshima_data.txt
+touch input/machida_data.txt
+touch input/sumida_data.txt
+touch input/chiyoda_data.txt
+touch input/kita_data.txt
+touch input/kobe_data.txt

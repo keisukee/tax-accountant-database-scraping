@@ -88,17 +88,12 @@ trs.each do |tr|
   driver.switch_to.window(current_window)
   new_window = driver.window_handles.last
   driver.switch_to.window(new_window)
-  sleep 5
+  sleep 2
   goal_tds = driver.find_elements(tag_name: "td")
   goal_tds.each do |td|
     puts td.text
   end
-  # sleep 3
-  # driver.close
   driver.switch_to.window(current_window)
-  # tds.each do |td|
-  #   puts td.text
-  # end
 end
 
 sleep 1

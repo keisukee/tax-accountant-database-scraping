@@ -27,6 +27,7 @@ def calc_pagenation_count(driver, original_window)
   count = search_count_result.text.to_i # 例えばcount = 22だったらページ遷移は2回, count = 1 ~ 10だったらページ遷移は0回
   trial_times = 0
 
+  # ex) 検索結果 = count = 9件だったら、ページ遷移は0回。22件だったら、ページ遷移は2回
   while count > 10
     count -= 10
     trial_times += 1
@@ -36,8 +37,6 @@ def calc_pagenation_count(driver, original_window)
 end
 
 driver.get url
-
-driver.manage.timeouts.implicit_wait = 5
 
 sleep 1
 
@@ -63,21 +62,24 @@ sleep 1
 # input_buttons[1].send_keys("山梨県北杜市") # 1ページのみ
 # input_buttons[1].send_keys("下北沢") # 2ページ
 # input_buttons[1].send_keys("恵比寿南") # 3ページ
-input_buttons[1].send_keys("東京都") # 100件こえる場合
+# input_buttons[1].send_keys("東京都") # 100件こえる場合
+input_buttons[1].send_keys("めんそーれ") # 1件もヒットしない場合
 sleep 1
 
 # 検索ボタンをクリック
 a_buttons = driver.find_elements(tag_name: "a")
 a_buttons[2].click
 
-# 検索結果が100件以上を越える場合、アラートが出る
+# 検索結果が100件以上を越える場合、もしくは0件の場合、アラートが出る
 begin
   if dialog = driver.switch_to.alert
     if dialog.text.include?('100件を超えています')
       puts "検索結果が100件を超えたのでスクレイピングできません"
-      dialog.accept
-      exit
+    elsif dialog.text.include?('該当するデータはありません')
+      puts "検索結果が0件でした"
     end
+    dialog.accept
+    exit
   end
 rescue => e
 

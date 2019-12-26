@@ -42,7 +42,7 @@ sleep 1
 atags = driver.find_elements(tag_name: "a")
 a = atags[5]
 driver.execute_script("arguments[0].click();", a)
-sleep 1
+sleep 2
 driver.execute_script("javascript:onclick=jf_SearchClick(1);")
 sleep 1
 trs = driver.find_elements(tag_name: "tr")
@@ -107,6 +107,7 @@ trial_times.times do |i|
     show_link = each_accountant_data_table[each_accountant_data_table_length - 1].find_element(tag_name: "a")
     # 個別の税理士の詳細ページに遷移
     show_link.click
+    sleep 2
     # リンクをクリックするとアラートが出るので処理
     dialog = driver.switch_to.alert
     if dialog.text == '利用条件に同意しますか？'
@@ -115,7 +116,7 @@ trial_times.times do |i|
       dialog.dismiss
     end
 
-    sleep 1
+    sleep 2
     # 税理士の詳細ページにdriverのフォーカスを切り替えるため
     new_window = driver.window_handles.last
     driver.switch_to.window(new_window)
@@ -131,7 +132,7 @@ trial_times.times do |i|
 
   sleep 1
   move_to_next_page(driver, current_window, new_window)
-  driver.switch_to.window(current_window)
+  # driver.switch_to.window(current_window)
 end
 
 driver.quit

@@ -10,6 +10,7 @@ ruby scrape_and_output.rb input/sagamihara_data.txt > output/sagamihara_output.t
 ruby scrape_and_output.rb input/fujisawa_data.txt > output/fujisawa_output.txt
 ruby scrape_and_output.rb input/chigasaki_data.txt > output/chigasaki_output.txt
 ruby scrape_and_output.rb input/chiba_data.txt > output/chiba_output.txt
+
 ruby scrape_and_output.rb input/funabashi_data.txt > output/funabashi_output.txt
 ruby scrape_and_output.rb input/ichikawa_data.txt > output/ichikawa_output.txt
 ruby scrape_and_output.rb input/kashiwa_data.txt > output/kashiwa_output.txt

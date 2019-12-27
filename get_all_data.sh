@@ -13,6 +13,7 @@ ruby scrape_and_output.rb input/chiba_data.txt > output/chiba_output.txt
 ruby scrape_and_output.rb input/funabashi_data.txt > output/funabashi_output.txt
 ruby scrape_and_output.rb input/ichikawa_data.txt > output/ichikawa_output.txt
 ruby scrape_and_output.rb input/kashiwa_data.txt > output/kashiwa_output.txt
+
 ruby scrape_and_output.rb input/matsudo_data.txt > output/matsudo_output.txt
 ruby scrape_and_output.rb input/osaka_data.txt > output/osaka_output.txt
 ruby scrape_and_output.rb input/maikata_data.txt > output/maikata_output.txt

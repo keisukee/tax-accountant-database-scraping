@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-ruby scrape_and_output.rb input/yokohama_data.txt > output/yokohama_output.txt
-ruby scrape_and_output.rb input/kyoto_data.txt > output/kyoto_output.txt
+# ruby scrape_and_output.rb input/yokohama_data.txt > output/yokohama_output.txt
+# ruby scrape_and_output.rb input/kyoto_data.txt > output/kyoto_output.txt
 ruby scrape_and_output.rb input/saitama_data.txt > output/saitama_output.txt
 ruby scrape_and_output.rb input/kawaguchi_data.txt > output/kawaguchi_output.txt
 ruby scrape_and_output.rb input/kawagoe_data.txt > output/kawagoe_output.txt

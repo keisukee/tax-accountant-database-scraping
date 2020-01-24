@@ -114,12 +114,12 @@ def scrape(location)
       show_link.click
       sleep 2
       # リンクをクリックするとアラートが出るので処理
-      dialog = driver.switch_to.alert
-      if dialog.text == '利用条件に同意しますか？'
-        dialog.accept
-      else
-        dialog.dismiss
-      end
+      # dialog = driver.switch_to.alert
+      # if dialog.text == '利用条件に同意しますか？'
+      #   dialog.accept
+      # else
+      #   dialog.dismiss
+      # end
 
       sleep 2
       # 税理士の詳細ページにdriverのフォーカスを切り替えるため

@@ -1,6 +1,5 @@
 require 'spreadsheet'
 
-
 def read_file(file_name)
   original_data = []
   count = 0
@@ -22,7 +21,6 @@ def read_file(file_name)
   original_data
 end
 
-
 def create_sheet(sheet_name, original_data)
   # 新規作成
   book = Spreadsheet::Workbook.new
@@ -43,6 +41,7 @@ def create_sheet(sheet_name, original_data)
       index_to_show << i
       next
     else
+      # 重複データを省く処理
       office_name = original_data[i][5] # 6番目が事務所の名前
       person_name = original_data[i][2].split("　")
       if office_name.include?(person_name[0]) || office_name.include?(person_name[1])

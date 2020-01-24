@@ -1,4 +1,8 @@
 require "selenium-webdriver"
+require "logger"
+require "time"
+
+logger = Logger.new("log/#{Time.now.getlocal}.log")
 
 def url
   "https://www.zeirishikensaku.jp/z_top2.asp"
@@ -41,7 +45,7 @@ end
 
 def scrape(location)
   options = Selenium::WebDriver::Firefox::Options.new
-  # options.add_argument('-headless')
+  options.add_argument('-headless')
   driver = Selenium::WebDriver.for :firefox, options: options
   driver.get url
   sleep 1
@@ -174,9 +178,12 @@ times = 2
 locations.each do |location|
   try = 0
   begin
+    logger.info("start scraping #{location}...")
     scrape(location)
+    logger.info("complete scraping #{location}...")
     sleep 2
   rescue
+    logger.info("something went wrong and now retrying on scraping #{location}...")
     retry if try < times
     next
   end

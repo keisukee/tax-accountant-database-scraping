@@ -41,7 +41,7 @@ end
 
 def scrape(location)
   options = Selenium::WebDriver::Firefox::Options.new
-  # options.add_argument('-headless')
+  options.add_argument('-headless')
   driver = Selenium::WebDriver.for :firefox, options: options
   driver.get url
   sleep 1
@@ -50,7 +50,7 @@ def scrape(location)
   driver.execute_script("arguments[0].click();", a)
   sleep 2
   # ---ここから下は、税理士or税理士法人を調べたいかで引数を微妙に変える
-  driver.execute_script("javascript:onclick=jf_SearchClick(2);") # 「税理士」を探したいならSearchClickの引数に1を、「税理士法人」を探したいならSearchClickの引数に2を
+  driver.execute_script("javascript:onclick=jf_SearchClick(1);") # 「税理士」を探したいならSearchClickの引数に1を、「税理士法人」を探したいならSearchClickの引数に2を
   sleep 1
   trs = driver.find_elements(tag_name: "tr")
 
@@ -64,7 +64,7 @@ def scrape(location)
   
   input_buttons = driver.find_elements(tag_name: "input")
   # 「税理士」を探したいならinput_buttonsの引数に4を、「税理士法人」を探したいならinput_buttonsの引数に3を
-  input_buttons[3].click # 事務所所在地のラジオボタンをクリック
+  input_buttons[4].click # 事務所所在地のラジオボタンをクリック
   sleep 1
   input_buttons[1].send_keys(location)
   sleep 1

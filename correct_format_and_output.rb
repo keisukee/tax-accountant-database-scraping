@@ -33,9 +33,9 @@ def create_sheet(sheet_name, original_data)
   # 判定漏れで省かれてしまう事務所は仕方ない
   
   l = original_data.length
-  
+
   index_to_show = []
-  
+
   l.times do |i|
     if original_data[i][1].include?("スクレイピングできません")
       index_to_show << i
@@ -44,7 +44,9 @@ def create_sheet(sheet_name, original_data)
       # 重複データを省く処理
       office_name = original_data[i][5] # 6番目が事務所の名前
       person_name = original_data[i][2].split("　")
-      if office_name.include?(person_name[0]) || office_name.include?(person_name[1])
+      puts office_name
+      puts person_name
+      if (office_name && person_name[0] && office_name.include?(person_name[0])) || (office_name && person_name[1] && office_name.include?(person_name[1]))
         # puts "#{office_name}は#{person_name[0]}と#{person_name[1]}をふくみます"
         index_to_show << i
       else
